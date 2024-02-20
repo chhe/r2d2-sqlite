@@ -24,17 +24,17 @@ name = "test"
 path = "tests/test.rs"
 
 [dependencies]
-r2d2 = "0.8"
-uuid = { version = "1.7", features = ["v4", "fast-rng"] }
+r2d2 = "=0.8.10"
+uuid = { version = "=1.7.0", features = ["v4", "fast-rng"] }
 
 [dependencies.rusqlite]
-version = "0.31"
+version = "=0.31.0"
 
 [dev-dependencies]
-tempfile = "3"
+tempfile = "=3.10.0"
 
 [dev-dependencies.rusqlite]
-version = "0.31"
+version = "=0.31.0"
 features = ["trace"]
 
 
