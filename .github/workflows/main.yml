@@ -1,0 +1,69 @@
+name: main
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build-test-check-clippy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: checkout
+      uses: actions/checkout@v4
+
+    - name: install rust
+      uses: dtolnay/rust-toolchain@master
+      with:
+        toolchain: stable
+        components: clippy
+
+    - name: cache ${HOME}/.cache/sccache
+      uses: actions/cache@v3
+      with:
+        path: |
+          /home/runner/.cache/sccache          
+        key: ${{ runner.os }}-${{ github.job }}-home-cache-sccache
+
+    - name: setup rust cache
+      uses: Swatinem/rust-cache@v2
+      with:
+        cache-all-crates: "true"
+
+    - name: use sccache
+      uses: mozilla-actions/sccache-action@v0.0.4
+      with:
+        version: "v0.7.7"
+
+    - name: run cargo build main
+      run: cargo build --all --release
+
+    - name: run cargo test
+      run: cargo test
+
+    - name: run cargo check
+      run: cargo check
+
+    - name: run clippy
+      run: cargo clippy -- -D warnings
+
+  format:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: checkout
+      uses: actions/checkout@v4
+
+    - name: install latest rust
+      uses: dtolnay/rust-toolchain@master
+      with:
+        toolchain: stable
+        components: rustfmt
+
+    - name: format check
+      run: cargo fmt -- --check
