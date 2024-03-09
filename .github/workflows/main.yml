@@ -24,7 +24,7 @@ jobs:
         components: clippy
 
     - name: cache ${HOME}/.cache/sccache
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         path: |
           /home/runner/.cache/sccache          
