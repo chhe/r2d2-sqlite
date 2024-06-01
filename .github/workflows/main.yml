@@ -33,7 +33,7 @@ jobs:
     - name: use sccache
       uses: mozilla-actions/sccache-action@v0.0.4
       with:
-        version: "v0.7.7"
+        version: "v0.8.1"
 
     - name: run cargo build main
       run: cargo build --all --release
