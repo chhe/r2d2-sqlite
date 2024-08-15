@@ -26,6 +26,14 @@ jobs:
     - name: checkout
       uses: actions/checkout@v4.1.7
 
+    - name: cache rust toolchain
+      uses: actions/cache@v4.0.2
+      with:
+        path: |
+          ~/.cargo
+          ~/.rustup
+        key: ${{ runner.os }}-rust
+
     - name: install rust
       uses: dtolnay/rust-toolchain@master
       with:
@@ -60,6 +68,14 @@ jobs:
     steps:
     - name: checkout
       uses: actions/checkout@v4.1.7
+
+    - name: cache rust toolchain
+      uses: actions/cache@v4.0.2
+      with:
+        path: |
+          ~/.cargo
+          ~/.rustup
+        key: ${{ runner.os }}-rust
 
     - name: install latest rust
       uses: dtolnay/rust-toolchain@master
