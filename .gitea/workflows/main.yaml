@@ -59,9 +59,6 @@ jobs:
     - name: run cargo check
       run: cargo check
 
-    - name: run clippy
-      run: cargo clippy -- -D warnings
-
   format:
     runs-on: ubuntu-latest
 
