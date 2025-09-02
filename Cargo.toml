@@ -25,7 +25,7 @@ path = "tests/test.rs"
 
 [dependencies]
 r2d2 = "=0.8.10"
-uuid = { version = "=1.18.0", features = ["v4", "fast-rng"] }
+uuid = { version = "=1.18.1", features = ["v4", "fast-rng"] }
 
 [dependencies.rusqlite]
 version = "=0.37.0"
