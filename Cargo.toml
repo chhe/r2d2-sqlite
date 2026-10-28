@@ -28,14 +28,14 @@ r2d2 = "=0.8.10"
 uuid = { version = "=1.29.0", features = ["v4", "fast-rng"] }
 
 [dependencies.rusqlite]
-version = "=0.40.2"
+version = "=0.41.0"
 
 [dev-dependencies]
 tempfile = "=3.27.0"
 
 [dev-dependencies.rusqlite]
-version = "=0.40.2"
-features = ["trace"]
+version = "=0.41.0"
+features = ["trace", "bundled"]
 
 
 [features]
